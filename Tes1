@@ -1,0 +1,105 @@
+mixed-port: 7890
+allow-lan: true
+bind-address: '*'
+mode: rule
+log-level: info
+external-controller: '127.0.0.1:9090'
+dns:
+    enable: true
+    ipv6: false
+    default-nameserver: [223.5.5.5, 119.29.29.29]
+    enhanced-mode: fake-ip
+    fake-ip-range: 198.18.0.1/16
+    use-hosts: true
+    nameserver: ['https://doh.pub/dns-query']
+    fallback: ['tls://1.0.0.1:853', 'https://cloudflare-dns.com/dns-query', 'https://dns.google/dns-query']
+    fallback-filter: { geoip: true, ipcidr: [240.0.0.0/4, 0.0.0.0/32] }
+proxies:
+    - { name: 'đŸ‡»đŸ‡³ đ’đđ˜đ‡đ“ đŒđ‚đ•đ‹ đŸ đŸ‡»đŸ‡³', type: vmess, server: mcvl1.vpndata.vn, port: '80', uuid: 3985711e-1e06-4a19-be29-811126772869, alterId: 0, cipher: auto, udp: true, network: ws, ws-opts: { path: /VPNDATA.xYx, headers: { Host: dl.aw.freefiremobile.com } } }
+    - { name: 'đŸ‡»đŸ‡³ đ’đđ˜đ‡đ“ đŒđ‚đ•đ‹ đŸ đ“đ‹đ’ đŸ‡»đŸ‡³', type: trojan, server: mcvl1.vpndata.vn, port: '443', password: 3985711e-1e06-4a19-be29-811126772869, udp: true, sni: lienquan.garena.vn, skip-cert-verify: true }
+    - { name: 'đŸ‡»đŸ‡³ đ’đđ˜đ‡đ“ đŒđˆđ„̀‚̀€đ đđ€̀†̀đ‚ đŸ đ“đ‹đ’ đŸ‡»đŸ‡³', type: trojan, server: 103.149.87.45, port: '443', password: 3985711e-1e06-4a19-be29-811126772869, udp: true, sni: lienquan.garena.vn, skip-cert-verify: true }
+    - { name: 'đŸ‡»đŸ‡³ đŒđ̀đ² đ‚đ¡đ®̀‰ đˆđđ„đ“ đŸ‡»đŸ‡³', type: vmess, server: 103.56.162.171, port: '80', uuid: 3985711e-1e06-4a19-be29-811126772869, alterId: 0, cipher: auto, udp: true, network: ws, ws-opts: { path: /VPNDATA.xYx, headers: { Host: dl.aw.freefiremobile.com } } }
+    - { name: 'đŸ‡»đŸ‡³ đŒđ̀đ² đ‚đ¡đ®̀‰ đˆđđ„đ“ đ“đ‹đ’  đŸ‡»đŸ‡³', type: vmess, server: 103.56.162.171, port: '443', uuid: 3985711e-1e06-4a19-be29-811126772869, alterId: 0, cipher: auto, udp: true, tls: true, skip-cert-verify: true, servername: dl.aw.freefiremobile.com }
+    - { name: 'đŸ‡»đŸ‡³ đŒđ̀đ² đ‚đ¡đ®̀‰ đŸđ’ đŸ‡»đŸ‡³', type: vmess, server: 103.56.162.169, port: '80', uuid: 3985711e-1e06-4a19-be29-811126772869, alterId: 0, cipher: auto, udp: true, network: ws, ws-opts: { path: /VPNDATA.xYx, headers: { Host: dl.aw.freefiremobile.com } } }
+    - { name: 'đŸ‡»đŸ‡³ đŒđ̀đ² đ‚đ¡đ®̀‰ đŸđ’ đ“đ‹đ’  đŸ‡»đŸ‡³', type: vmess, server: 103.56.162.169, port: '443', uuid: 3985711e-1e06-4a19-be29-811126772869, alterId: 0, cipher: auto, udp: true, tls: true, skip-cert-verify: true, servername: dl.aw.freefiremobile.com }
+    - { name: 'đŸ‡»đŸ‡³ đŒđ̀đ² đ‚đ¡đ®̀‰ đ‡đ‚đŒ đŸ‡»đŸ‡³', type: vmess, server: 103.56.162.167, port: '80', uuid: 3985711e-1e06-4a19-be29-811126772869, alterId: 0, cipher: auto, udp: true, network: ws, ws-opts: { path: /VPNDATA.xYx, headers: { Host: dl.aw.freefiremobile.com } } }
+    - { name: 'đŸ‡»đŸ‡³ đŒđ̀đ² đ‚đ¡đ®̀‰ đ‡đ‚đŒ đ“đ‹đ’  đŸ‡»đŸ‡³', type: vmess, server: 103.56.162.167, port: '443', uuid: 3985711e-1e06-4a19-be29-811126772869, alterId: 0, cipher: auto, udp: true, tls: true, skip-cert-verify: true, servername: dl.aw.freefiremobile.com }
+proxy-groups:
+    - { name: đŸ†…đŸ…¿đŸ…½đŸ…³đŸ…°đŸ†ƒđŸ…°, type: select, proxies: ['â™»ï¸TÆ°̀£ chò£n', 'đŸ”¯Auto Ä‘Ă´̀‰i mày chù‰ (Ping Ă´̀‰n Ä‘ì£nh)', 'đŸ‡»đŸ‡³ đ’đđ˜đ‡đ“ đŒđ‚đ•đ‹ đŸ đŸ‡»đŸ‡³', 'đŸ‡»đŸ‡³ đ’đđ˜đ‡đ“ đŒđ‚đ•đ‹ đŸ đ“đ‹đ’ đŸ‡»đŸ‡³', 'đŸ‡»đŸ‡³ đ’đđ˜đ‡đ“ đŒđˆđ„̀‚̀€đ đđ€̀†̀đ‚ đŸ đ“đ‹đ’ đŸ‡»đŸ‡³', 'đŸ‡»đŸ‡³ đŒđ̀đ² đ‚đ¡đ®̀‰ đˆđđ„đ“ đŸ‡»đŸ‡³', 'đŸ‡»đŸ‡³ đŒđ̀đ² đ‚đ¡đ®̀‰ đˆđđ„đ“ đ“đ‹đ’  đŸ‡»đŸ‡³', 'đŸ‡»đŸ‡³ đŒđ̀đ² đ‚đ¡đ®̀‰ đŸđ’ đŸ‡»đŸ‡³', 'đŸ‡»đŸ‡³ đŒđ̀đ² đ‚đ¡đ®̀‰ đŸđ’ đ“đ‹đ’  đŸ‡»đŸ‡³', 'đŸ‡»đŸ‡³ đŒđ̀đ² đ‚đ¡đ®̀‰ đ‡đ‚đŒ đŸ‡»đŸ‡³', 'đŸ‡»đŸ‡³ đŒđ̀đ² đ‚đ¡đ®̀‰ đ‡đ‚đŒ đ“đ‹đ’  đŸ‡»đŸ‡³'] }
+    - { name: 'â™»ï¸TÆ°̀£ chò£n', type: url-test, proxies: ['đŸ‡»đŸ‡³ đ’đđ˜đ‡đ“ đŒđ‚đ•đ‹ đŸ đŸ‡»đŸ‡³', 'đŸ‡»đŸ‡³ đ’đđ˜đ‡đ“ đŒđ‚đ•đ‹ đŸ đ“đ‹đ’ đŸ‡»đŸ‡³', 'đŸ‡»đŸ‡³ đ’đđ˜đ‡đ“ đŒđˆđ„̀‚̀€đ đđ€̀†̀đ‚ đŸ đ“đ‹đ’ đŸ‡»đŸ‡³', 'đŸ‡»đŸ‡³ đŒđ̀đ² đ‚đ¡đ®̀‰ đˆđđ„đ“ đŸ‡»đŸ‡³', 'đŸ‡»đŸ‡³ đŒđ̀đ² đ‚đ¡đ®̀‰ đˆđđ„đ“ đ“đ‹đ’  đŸ‡»đŸ‡³', 'đŸ‡»đŸ‡³ đŒđ̀đ² đ‚đ¡đ®̀‰ đŸđ’ đŸ‡»đŸ‡³', 'đŸ‡»đŸ‡³ đŒđ̀đ² đ‚đ¡đ®̀‰ đŸđ’ đ“đ‹đ’  đŸ‡»đŸ‡³', 'đŸ‡»đŸ‡³ đŒđ̀đ² đ‚đ¡đ®̀‰ đ‡đ‚đŒ đŸ‡»đŸ‡³', 'đŸ‡»đŸ‡³ đŒđ̀đ² đ‚đ¡đ®̀‰ đ‡đ‚đŒ đ“đ‹đ’  đŸ‡»đŸ‡³'], url: 'http://www.gstatic.com/generate_204', interval: 600 }
+    - { name: 'đŸ”¯Auto Ä‘Ă´̀‰i mày chù‰ (Ping Ă´̀‰n Ä‘ì£nh)', type: fallback, proxies: ['đŸ‡»đŸ‡³ đ’đđ˜đ‡đ“ đŒđ‚đ•đ‹ đŸ đŸ‡»đŸ‡³', 'đŸ‡»đŸ‡³ đ’đđ˜đ‡đ“ đŒđ‚đ•đ‹ đŸ đ“đ‹đ’ đŸ‡»đŸ‡³', 'đŸ‡»đŸ‡³ đ’đđ˜đ‡đ“ đŒđˆđ„̀‚̀€đ đđ€̀†̀đ‚ đŸ đ“đ‹đ’ đŸ‡»đŸ‡³', 'đŸ‡»đŸ‡³ đŒđ̀đ² đ‚đ¡đ®̀‰ đˆđđ„đ“ đŸ‡»đŸ‡³', 'đŸ‡»đŸ‡³ đŒđ̀đ² đ‚đ¡đ®̀‰ đˆđđ„đ“ đ“đ‹đ’  đŸ‡»đŸ‡³', 'đŸ‡»đŸ‡³ đŒđ̀đ² đ‚đ¡đ®̀‰ đŸđ’ đŸ‡»đŸ‡³', 'đŸ‡»đŸ‡³ đŒđ̀đ² đ‚đ¡đ®̀‰ đŸđ’ đ“đ‹đ’  đŸ‡»đŸ‡³', 'đŸ‡»đŸ‡³ đŒđ̀đ² đ‚đ¡đ®̀‰ đ‡đ‚đŒ đŸ‡»đŸ‡³', 'đŸ‡»đŸ‡³ đŒđ̀đ² đ‚đ¡đ®̀‰ đ‡đ‚đŒ đ“đ‹đ’  đŸ‡»đŸ‡³'], url: 'http://www.gstatic.com/generate_204', interval: 450 }
+    - { name: VN, type: select, proxies: ['đŸ‡»đŸ‡³ đ’đđ˜đ‡đ“ đŒđ‚đ•đ‹ đŸ đŸ‡»đŸ‡³', 'đŸ‡»đŸ‡³ đŒđ̀đ² đ‚đ¡đ®̀‰ đˆđđ„đ“ đŸ‡»đŸ‡³', 'đŸ‡»đŸ‡³ đŒđ̀đ² đ‚đ¡đ®̀‰ đˆđđ„đ“ đ“đ‹đ’  đŸ‡»đŸ‡³', 'đŸ‡»đŸ‡³ đŒđ̀đ² đ‚đ¡đ®̀‰ đŸđ’ đŸ‡»đŸ‡³', 'đŸ‡»đŸ‡³ đŒđ̀đ² đ‚đ¡đ®̀‰ đŸđ’ đ“đ‹đ’  đŸ‡»đŸ‡³', 'đŸ‡»đŸ‡³ đŒđ̀đ² đ‚đ¡đ®̀‰ đ‡đ‚đŒ đŸ‡»đŸ‡³', 'đŸ‡»đŸ‡³ đŒđ̀đ² đ‚đ¡đ®̀‰ đ‡đ‚đŒ đ“đ‹đ’  đŸ‡»đŸ‡³'] }
+rule-providers:
+    reject: { type: http, behavior: domain, url: 'https://ghproxy.com/https://raw.githubusercontent.com/Loyalsoldier/clash-rules/release/reject.txt', path: ./ruleset/reject.yaml, interval: 86400 }
+    icloud: { type: http, behavior: domain, url: 'https://ghproxy.com/https://raw.githubusercontent.com/Loyalsoldier/clash-rules/release/icloud.txt', path: ./ruleset/icloud.yaml, interval: 86400 }
+    apple: { type: http, behavior: domain, url: 'https://ghproxy.com/https://raw.githubusercontent.com/Loyalsoldier/clash-rules/release/apple.txt', path: ./ruleset/apple.yaml, interval: 86400 }
+    google: { type: http, behavior: domain, url: 'https://ghproxy.com/https://raw.githubusercontent.com/Loyalsoldier/clash-rules/release/google.txt', path: ./ruleset/google.yaml, interval: 86400 }
+    proxy: { type: http, behavior: domain, url: 'https://ghproxy.com/https://raw.githubusercontent.com/Loyalsoldier/clash-rules/release/proxy.txt', path: ./ruleset/proxy.yaml, interval: 86400 }
+    direct: { type: http, behavior: domain, url: 'https://ghproxy.com/https://raw.githubusercontent.com/Loyalsoldier/clash-rules/release/direct.txt', path: ./ruleset/direct.yaml, interval: 86400 }
+    private: { type: http, behavior: domain, url: 'https://ghproxy.com/https://raw.githubusercontent.com/Loyalsoldier/clash-rules/release/private.txt', path: ./ruleset/private.yaml, interval: 86400 }
+    gfw: { type: http, behavior: domain, url: 'https://ghproxy.com/https://raw.githubusercontent.com/Loyalsoldier/clash-rules/release/gfw.txt', path: ./ruleset/gfw.yaml, interval: 86400 }
+    greatfire: { type: http, behavior: domain, url: 'https://ghproxy.com/https://raw.githubusercontent.com/Loyalsoldier/clash-rules/release/greatfire.txt', path: ./ruleset/greatfire.yaml, interval: 86400 }
+    tld-not-cn: { type: http, behavior: domain, url: 'https://ghproxy.com/https://raw.githubusercontent.com/Loyalsoldier/clash-rules/release/tld-not-cn.txt', path: ./ruleset/tld-not-cn.yaml, interval: 86400 }
+    telegramcidr: { type: http, behavior: ipcidr, url: 'https://ghproxy.com/https://raw.githubusercontent.com/Loyalsoldier/clash-rules/release/telegramcidr.txt', path: ./ruleset/telegramcidr.yaml, interval: 86400 }
+    cncidr: { type: http, behavior: ipcidr, url: 'https://ghproxy.com/https://raw.githubusercontent.com/Loyalsoldier/clash-rules/release/cncidr.txt', path: ./ruleset/cncidr.yaml, interval: 86400 }
+    lancidr: { type: http, behavior: ipcidr, url: 'https://ghproxy.com/https://raw.githubusercontent.com/Loyalsoldier/clash-rules/release/lancidr.txt', path: ./ruleset/lancidr.yaml, interval: 86400 }
+    applications: { type: http, behavior: classical, url: 'https://ghproxy.com/https://raw.githubusercontent.com/Loyalsoldier/clash-rules/release/applications.txt', path: ./ruleset/applications.yaml, interval: 86400 }
+rules:
+    - 'DOMAIN,vpndata.vn,DIRECT'
+    - 'PROCESS-NAME,v2ray,DIRECT'
+    - 'PROCESS-NAME,xray,DIRECT'
+    - 'PROCESS-NAME,naive,DIRECT'
+    - 'PROCESS-NAME,trojan,DIRECT'
+    - 'PROCESS-NAME,trojan-go,DIRECT'
+    - 'PROCESS-NAME,ss-local,DIRECT'
+    - 'PROCESS-NAME,privoxy,DIRECT'
+    - 'PROCESS-NAME,leaf,DIRECT'
+    - 'PROCESS-NAME,v2ray.exe,DIRECT'
+    - 'PROCESS-NAME,xray.exe,DIRECT'
+    - 'PROCESS-NAME,naive.exe,DIRECT'
+    - 'PROCESS-NAME,trojan.exe,DIRECT'
+    - 'PROCESS-NAME,trojan-go.exe,DIRECT'
+    - 'PROCESS-NAME,ss-local.exe,DIRECT'
+    - 'PROCESS-NAME,privoxy.exe,DIRECT'
+    - 'PROCESS-NAME,leaf.exe,DIRECT'
+    - 'PROCESS-NAME,Surge,DIRECT'
+    - 'PROCESS-NAME,Surge 2,DIRECT'
+    - 'PROCESS-NAME,Surge 3,DIRECT'
+    - 'PROCESS-NAME,Surge 4,DIRECT'
+    - 'PROCESS-NAME,Surge%202,DIRECT'
+    - 'PROCESS-NAME,Surge%203,DIRECT'
+    - 'PROCESS-NAME,Surge%204,DIRECT'
+    - 'PROCESS-NAME,Thunder,DIRECT'
+    - 'PROCESS-NAME,DownloadService,DIRECT'
+    - 'PROCESS-NAME,qBittorrent,DIRECT'
+    - 'PROCESS-NAME,Transmission,DIRECT'
+    - 'PROCESS-NAME,fdm,DIRECT'
+    - 'PROCESS-NAME,aria2c,DIRECT'
+    - 'PROCESS-NAME,Folx,DIRECT'
+    - 'PROCESS-NAME,NetTransport,DIRECT'
+    - 'PROCESS-NAME,uTorrent,DIRECT'
+    - 'PROCESS-NAME,WebTorrent,DIRECT'
+    - 'PROCESS-NAME,aria2c.exe,DIRECT'
+    - 'PROCESS-NAME,BitComet.exe,DIRECT'
+    - 'PROCESS-NAME,fdm.exe,DIRECT'
+    - 'PROCESS-NAME,NetTransport.exe,DIRECT'
+    - 'PROCESS-NAME,qbittorrent.exe,DIRECT'
+    - 'PROCESS-NAME,Thunder.exe,DIRECT'
+    - 'PROCESS-NAME,ThunderVIP.exe,DIRECT'
+    - 'PROCESS-NAME,transmission-daemon.exe,DIRECT'
+    - 'PROCESS-NAME,transmission-qt.exe,DIRECT'
+    - 'PROCESS-NAME,uTorrent.exe,DIRECT'
+    - 'PROCESS-NAME,WebTorrent.exe,DIRECT'
+    - 'DOMAIN,clash.razord.top,DIRECT'
+    - 'DOMAIN,yacd.haishan.me,DIRECT'
+    - 'RULE-SET,private,DIRECT'
+    - 'RULE-SET,reject,REJECT'
+    - 'RULE-SET,icloud,DIRECT'
+    - 'RULE-SET,apple,DIRECT'
+    - 'RULE-SET,google,DIRECT'
+    - 'RULE-SET,proxy,đŸ†…đŸ…¿đŸ…½đŸ…³đŸ…°đŸ†ƒđŸ…°'
+    - 'RULE-SET,direct,DIRECT'
+    - 'RULE-SET,telegramcidr,đŸ†…đŸ…¿đŸ…½đŸ…³đŸ…°đŸ†ƒđŸ…°'
+    - 'GEOIP,,DIRECT'
+    - 'GEOIP,CN,DIRECT'
+    - 'MATCH,đŸ†…đŸ…¿đŸ…½đŸ…³đŸ…°đŸ†ƒđŸ…°'
